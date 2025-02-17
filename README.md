@@ -374,7 +374,6 @@ For now this is available only for the telescope backend, but feel free to reque
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua/blob/061a4df40f5238782fdd7b380fe55650fadd9384/README.md?plain=1#L259-L264) - provides a `vim.ui.select` implementation for fzf
 - [nvim-fzy](https://github.com/mfussenegger/nvim-fzy) - fzf alternative that also provides a `vim.ui.select` implementation ([#13](https://github.com/mfussenegger/nvim-fzy/pull/13))
 - [guihua.lua](https://github.com/ray-x/guihua.lua) - multipurpose GUI library that provides `vim.ui.select` and `vim.ui.input` implementations
-- [nvim-notify](https://github.com/rcarriga/nvim-notify) - doing pretty much the
-  same thing but for `vim.notify`
+- [nvim-notify](https://github.com/rcarriga/nvim-notify) - the original project for `vim.notify`, which is also included in Uzuri.nvim
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - provides common UI
   components for plugin authors. [The wiki](https://github.com/MunifTanjim/nui.nvim/wiki/vim.ui) has examples of how to build your own `vim.ui` interfaces.
