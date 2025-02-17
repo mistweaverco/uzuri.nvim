@@ -3,17 +3,19 @@ local patch = require("uzuri.patch")
 local M = {}
 
 M.setup = function(opts)
+  opts = opts or {}
   require("uzuri.config").update(opts)
+  if opts.notify ~= false then
+    require("uzuri.notify").setup(opts.notify)
+    vim.notify = require("uzuri.notify") --luacheck: ignore
+  end
   M.patch()
 end
 
 ---Patch all the vim.ui methods
 M.patch = function()
   if vim.fn.has("nvim-0.10") == 0 then
-    vim.notify_once(
-      "uzuri has dropped support for Neovim <0.10. Please upgrade Neovim",
-      vim.log.levels.ERROR
-    )
+    vim.notify_once("uzuri has dropped support for Neovim <0.10. Please upgrade Neovim", vim.log.levels.ERROR)
     return
   end
   patch.all()

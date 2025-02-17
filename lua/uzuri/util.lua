@@ -75,13 +75,7 @@ M.calculate_row = function(relative, height, winid)
 end
 
 M.calculate_width = function(relative, desired_width, config, winid)
-  return calculate_dim(
-    desired_width,
-    config.width,
-    config.min_width,
-    config.max_width,
-    get_max_width(relative, winid)
-  )
+  return calculate_dim(desired_width, config.width, config.min_width, config.max_width, get_max_width(relative, winid))
 end
 
 M.calculate_height = function(relative, desired_height, config, winid)
@@ -118,10 +112,7 @@ M.add_title_to_win = function(winid, title, opts)
     elseif opts.align == "right" then
       col = vim.api.nvim_win_get_width(winid) - 1 - width
     elseif opts.align ~= "left" then
-      vim.notify(
-        string.format("Unknown uzuri window title alignment: '%s'", opts.align),
-        vim.log.levels.ERROR
-      )
+      vim.notify(string.format("Unknown uzuri window title alignment: '%s'", opts.align), vim.log.levels.ERROR)
     end
     title_winid = vim.api.nvim_open_win(bufnr, false, {
       relative = "win",
@@ -136,11 +127,7 @@ M.add_title_to_win = function(winid, title, opts)
       noautocmd = true,
     })
     winid_map[winid] = title_winid
-    vim.api.nvim_set_option_value(
-      "winblend",
-      vim.wo[winid].winblend,
-      { scope = "local", win = title_winid }
-    )
+    vim.api.nvim_set_option_value("winblend", vim.wo[winid].winblend, { scope = "local", win = title_winid })
     vim.bo[bufnr].bufhidden = "wipe"
     vim.cmd(string.format(
       [[

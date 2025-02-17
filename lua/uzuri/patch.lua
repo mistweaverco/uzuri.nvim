@@ -2,7 +2,6 @@ local all_modules = { "input", "select" }
 
 local M = {}
 
--- For Neovim before 0.6
 if not vim.ui then
   vim.ui = {}
 end

@@ -4,12 +4,7 @@ local M = {}
 
 M.create_plug_maps = function(bufnr, plug_bindings)
   for _, binding in ipairs(plug_bindings) do
-    vim.keymap.set(
-      "",
-      binding.plug,
-      binding.rhs,
-      { buffer = bufnr, desc = binding.desc, nowait = true }
-    )
+    vim.keymap.set("", binding.plug, binding.rhs, { buffer = bufnr, desc = binding.desc, nowait = true })
   end
 end
 

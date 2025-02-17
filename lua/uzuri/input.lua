@@ -239,9 +239,7 @@ M.completefunc = function(findstart, base)
         local load_func = string.format("return %s(...)", vimfunc:sub(7))
         local luafunc, err = loadstring(load_func)
         if not luafunc then
-          vim.api.nvim_err_writeln(
-            string.format("Could not find completion function %s: %s", vimfunc, err)
-          )
+          vim.api.nvim_err_writeln(string.format("Could not find completion function %s: %s", vimfunc, err))
           return {}
         end
         ret = luafunc(base, base, vim.fn.strlen(base))
@@ -257,9 +255,7 @@ M.completefunc = function(findstart, base)
       if ok then
         return result
       else
-        vim.api.nvim_err_writeln(
-          string.format("uzuri.nvim: unsupported completion method '%s'", completion)
-        )
+        vim.api.nvim_err_writeln(string.format("uzuri.nvim: unsupported completion method '%s'", completion))
         return {}
       end
     end
@@ -324,8 +320,7 @@ local function create_or_update_win(config, prompt_lines, default)
   end
 
   -- First calculate the desired base width of the modal
-  local prefer_width =
-    util.calculate_width(config.relative, config.prefer_width, config, parent_win)
+  local prefer_width = util.calculate_width(config.relative, config.prefer_width, config, parent_win)
   -- Then expand the width to fit the prompt and default value
   prefer_width = math.max(prefer_width, 4 + get_max_strwidth(prompt_lines))
   if default then
