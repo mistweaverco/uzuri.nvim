@@ -99,7 +99,7 @@ function UzuriNotificationBuf:render()
   local notif = self._notif
   local buf = self._buffer
 
-  local render_namespace = require("notify.render.base").namespace()
+  local render_namespace = require("uzuri.notify.render.base").namespace()
   api.nvim_buf_set_option(buf, "filetype", "notify")
   api.nvim_buf_set_option(buf, "modifiable", true)
   api.nvim_buf_clear_namespace(buf, render_namespace, 0, -1)
@@ -113,7 +113,8 @@ function UzuriNotificationBuf:render()
   for _, line in pairs(lines) do
     width = math.max(width, vim.api.nvim_strwidth(line))
   end
-  local success, extmarks = pcall(api.nvim_buf_get_extmarks, buf, render_namespace, 0, #lines, { details = true })
+  local success, extmarks =
+    pcall(api.nvim_buf_get_extmarks, buf, render_namespace, 0, #lines, { details = true })
   if not success then
     extmarks = {}
   end
@@ -152,5 +153,7 @@ end
 ---@param notification uzuri.notify.Notification;q
 ---@return UzuriNotificationBuf
 return function(buf, notification, opts)
-  return UzuriNotificationBuf:new(vim.tbl_extend("keep", { buffer = buf, notif = notification }, opts or {}))
+  return UzuriNotificationBuf:new(
+    vim.tbl_extend("keep", { buffer = buf, notif = notification }, opts or {})
+  )
 end
