@@ -25,7 +25,7 @@ It styles the input and select windows in Neovim.
 > This is a fork of the archived [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 > that is being maintained.
 >
-> All the hard work has been done by [Steven Arcangeli](https://github/com/stevearc),
+> All the hard work has been done by [Steven Arcangeli](https://github.com/stevearc),
 > we're just keeping it alive.
 
 Why the fork? We like snacks.nvim 🍿,
